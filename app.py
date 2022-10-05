@@ -191,7 +191,7 @@ def profile(user):
                                                     "Adult/NSFW"]},
                 "chapters.0":
                 {"$exists": True}})
-    user_stories_count = user_stories.count()
+    user_stories_count = len(list(user_stories))
     return render_template("profile.html",
                            user=user,
                            stories=user_stories,
