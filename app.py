@@ -179,19 +179,26 @@ def profile(user):
         flash(user + " doesn't exist")
         return redirect(url_for('index'))
     if user == session.get('username'):
-        user_stories = stories_collection.find({'author': user})
+        user_stories = list(stories_collection.find({'author': user}))
+        print("USER IS AUTHOR, STORIES: ", user_stories)
+        user_stories_count = len(user_stories)
+        print("NUMBER OF STORIES:", user_stories_count)
     else:
         if session.get("is_adult") is True:
-            user_stories = stories_collection.find(
-                {'author': user, "chapters.0": {"$exists": True}})
+            user_stories = list(stories_collection.find(
+                {'author': user, "chapters.0": {"$exists": True}}))
+            print(user_stories)
         else:
-            user_stories = stories_collection.find({'author': user, "rating": {
+            user_stories = list(stories_collection.find({
+                'author': user,
+                "rating": {
                                                    "$nin":
                                                    ["R/Adult/NSFW",
                                                     "Adult/NSFW"]},
                 "chapters.0":
-                {"$exists": True}})
-    user_stories_count = len(list(user_stories))
+                {"$exists": True}}))
+    user_stories_count = len(user_stories)
+    print("NUMBER OF STORIES:", user_stories_count)
     return render_template("profile.html",
                            user=user,
                            stories=user_stories,
@@ -638,7 +645,7 @@ def delete_story(story_to_read):
     story = stories_collection.find_one({"url": story_to_read})
     if session.get('username') is not None:
         if session['username'] == story['author']:
-            stories_collection.remove({"url": story_to_read})
+            stories_collection.delete_one({"url": story_to_read})
             flash("Story deleted!")
             return redirect(url_for('profile', user=session['username']))
         else:
