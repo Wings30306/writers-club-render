@@ -27,7 +27,9 @@ header {
 
 header.masthead {
   margin-bottom: 0;
-  background-image: url('../images/pexels-suzy-hazelwood-1995842.jpg');
+  background-image: url('../images/pexels-suzy-hazelwood-1995842.jpg'); 
+  /* Photo by Suzy Hazelwood: https://www.pexels.com/photo/black-and-red-typewriter-1995842/
+  */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top center;
