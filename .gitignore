@@ -1,9 +1,6 @@
-core.Microsoft*
-core.mongo*
-core.python*
-env.py
-__pycache__/
-*.py[cod]
-node_modules/
-.github/
-cloudinary_python.txt
+.ms4env
+.vscode
+__pycache__
+static/images/heidi/*
+.coverage
+htmlcov

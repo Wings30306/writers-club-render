@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %} Search for a story {% endblock %} {%
+block header %} Search for a story {% endblock %} {% block content %}
+<h2>Search</h2>
+<form method="POST">
+  <div class="row">
+    <div class="form-group col-md-3">
+      <label for="genre">Genre</label>
+      <select class="form-control" id="genre" name="genre">
+        <option>No genre selected</option>
+        {% for item in count if item.genre %}
+        <option>{{ item.genre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="fandom">Fandom</label>
+      <select class="form-control" id="fandom" name="fandom">
+        <option>No fandom selected</option>
+        {% for item in count if item.fandom %}
+        <option>{{ item.fandom }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="rating">Rating</label>
+      <select class="form-control" id="rating" name="rating">
+        <option>No rating selected</option>
+        {% for item in count if item.rating %}
+        <option>{{ item.rating }}</option>
+        {% endfor %}
+      </select>
+      <span>
+        <a data-toggle="modal" data-target="#ratings-modal"
+          >Ratings Guidelines</a
+        >
+      </span>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="author">Author</label>
+      <select class="form-control" id="author" name="author">
+        <option>No author selected</option>
+        {% for item in count if item.author %}
+        <option>{{ item.author }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-my-color btn-lg search-btn">
+        Search
+      </button>
+    </div>
+    <div class="col-6">
+      <a
+        href="{{ url_for('all_stories') }}"
+        class="btn btn-my-color btn-lg search-btn">
+        Cancel</a
+      >
+    </div>
+  </div>
+</form>
+
+{%endblock%}

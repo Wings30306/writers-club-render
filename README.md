@@ -1,108 +1,171 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Writers' Club
 
-Welcome USER_NAME,
+When I did the first project ([User Centric Frontend](https://wings30306.github.io/WingsBookClub/)), the main question I got from friends who write and read was: "Can you make it interactive so we can post our own stories and give feedback?" A few months have passed since, but it's here now: a website where you can post your own stories with no requirements: All stories are welcome here with no requirements or limitations for rating, genre, whether it's original or a fan fic, which fandom, how many chapters... and give feedback on other people's stories.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Happy reading / writing!
+ 
+## UX
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Read the full document for [thought process and database schemas](thought-process-and-database-schemas.pdf). As this project focuses on the back-end, a [template](https://startbootstrap.com/template-overviews/clean-blog/) has been used for the front-end look.
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### User Stories
+1.	As a reader, I would like to be able to read stories, preferably without signing in.
+2.	**WIP** As a reader, I would like to see the ratings by other people to decide which story I would like to read.
+4.	As a reader, I would like to be able to filter stories by fandom, genre, rating,…
+5.	As a reader, I would like to give feedback for stories. I understand I’ll have to sign in to do this.
+6.	**WIP** As a reader, I would also like to rate stories when I give feedback.
+7.	As a writer, I would like to easily add new chapters / stories.
+8.	As a writer, I would like to be able to change already-uploaded chapters too, in case I find a mistake or typo that needs to be corrected.
+9.	**WIP** As a writer, I would like to be able to upload a cover image for my story. 
+1.  If I don’t have a cover image, I'd like to have a choice of placeholder. 
+1.	**WIP** As a writer, I would like to receive any feedback in email so I don’t always have to check the site for new posts.
+1.	As a writer, I would like to be able to add a keyword (new genre, new fandom,…) if the one applicable to my story isn’t listed yet.
+1.	**WIP** As a writer, I would like to know how many times my story has been read. Visualisation (statistical graphs)  would be also be  nice for this. Perhaps a dashboard for each author, to be accessed on sign-in?
+1.	**WIP** As an admin, I would like to be able to suspend or block users who don’t follow the terms and conditions, for example those who post spam or don’t follow the guidelines for appropriate conduct.
+1. **WIP** As an admin, I'd like to be able to delete inappropriate comments in feedback or edit the story characteristics if they were put in incorrectly.
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+## Features
+ 
+### Existing Features
+- User Registration: allows new users to create an account so they can log in.
+- User Log-in: allows existing users to log in using their username or email and password. Passwords are hashed for security reasons. Log-in is required to read adult-rated stories, post your own stories and give feedback. 
+- User Profiles: allow users to tell others about themselves, provide a list of stories posted by this user. A user must be logged in to edit their own profile. A user cannot edit someone else's profile. A user must be logged in and an adult to be able to see adult-rated stories by the user whose profile they visit.
+- Search: allows a user to search for stories by rating, genre, fandom and/or author.
+- All Stories: exactly what it says: provides a list of all stories available to the user (filters out adult-rated stories if user is not logged in or underage).
+- Story pages: the main reason of existence for this project. These pages, generated for each chapter of each story, allow the user to actually read said story. 
+- Admin Area/Meet the Team: introduces users to the admin team. If user is an admin, they will also see reports by users that may require admin action. 
 
-Another blue button should appear to click: _Open Browser_.
+### Features Left to Implement
+- Allow users to upload their own cover image for a story.
+- Show graphs for writers as detailed in user stories.
+- Allow readers to rate other people's stories.
+- Allow readers to search for stories based on other users' average rating.
+- Allow admins to block/suspend users when necessary.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A blue button should appear to click: _Make Public_,
+## Technologies Used
 
-Another blue button should appear to click: _Open Browser_.
+### Languages
+- [HTML](https://html.com/#What_is_HTML) provides the main building blocks of the website in terms of structure and fixed content.
+- [CSS](https://techterms.com/definition/css) adds custom styling beyond what's provided in the template.
+- [Javascript](https://www.javascript.com/) is used to make the Quill editor work: 
+    - customize user options for styling their story, feedback or profile text.
+    - transfer the content of the Quill editor to a hidden input field in order to send it to the back-end for storing in the Database.
+- [Python](https://www.python.org/) provides the connection to the backend, specifically the NoSQL (Mongo) database that's hosted by [mlab](https://mlab.com). Also, it allows the use of the [Jinja](https://palletsprojects.com/p/jinja/) templating language that's used to display the data to the user and make the website dynamic - no need for hard-coding everything!
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Frameworks
+- [Bootstrap](https://getbootstrap.com/) provides the grid system that's used to make the website look good, as well as several components such as the responsive nav bar. The [template](https://startbootstrap.com/template-overviews/clean-blog/) used was also built with and provided by Bootstrap.
 
-To log into the Heroku toolbelt CLI:
+### Libraries
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- [JQuery](https://jquery.com) was used to simplify DOM manipulation. It is also required to make Bootstrap work. 
+- [Popper](https://popper.js.org/) is required to make Bootstrap work.
+- [QuillJS](https://quilljs.com/) provides the text editor that allow users to style their own content (stories, feedback, profile text). If you want _italic_ or **bold** text for example, you can add this easily.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+## Testing
 
-## Release History
+### Automated
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+Automated testing has been used to check that pages were loading, see [test file](test_app.py) for details.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Manual
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+All forms have been tested extensively both by myself during the build of this website and fellow students who offered to test. Required fields can't be submitted without a minimum amount of characters, so just typing a period or a single space won't allow the forms to pass.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+It's also been tested that use of the url won't override the restrictions for users to edit or delete other people's input (profile as well as stories).
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+A user also can't override the adult restriction by going through the author's profile or a search. I've not restricted individual stories in case of the server restarting during a read (and thus the session expiring) - the user would have to already have the url in order to use this to "cheat" the adult restrictions, meaning they would have to know the exact username of the author as well as the story title, which makes it a bit redundant as neither title or author show up in the story lists for underage or not-signed-in users.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Checking the code
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+The Python code itself has been checked and made PEP8-compliant using pep8online.com and pycodestyle.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+CSS has been run through the [Jigsaw CSS Validator](http://jigsaw.w3.org/css-validator/) with no errors found:
+![Valid CSS](http://jigsaw.w3.org/css-validator/images/vcss-blue "Valid CSS")
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+HTML has been checked by running the app links in the [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-writers-club.herokuapp.com%2F). This avoids any problems with Jinja templating that might show up if testing the file by upload, seen as the pages are tested **after** Jinja has been loaded rather than before. The only warning given was on the register page where there is a date input. Modern browsers seem to have no issue with this (see Browser Compatibility) as it's at least partially supported, so I've left it as is. 
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Browser compatibility
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+This site has been tested on following browsers:
+- Google Chrome
+- Microsoft Edge
+- Firefox
+- iOS Safari
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Responsive design
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+The site has been tested on various screen sizes from phone to SmartTV size using the DevTools provided in Google Chrome.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+It's also been tested on a Sony Experia smartphone with no discernable issues. 
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Deployment
 
-------
+This project is hosted on [Heroku](heroku.com). It's been deployed using the following steps:
+1. Sign up (new user) or sign in to Heroku account. _I already had an account from previous projects, so only needed to sign in._
+1. Click the button at the top right that says "New", select "Create new app" in the dropdown.
+1. Choose an app name. __Caution! This must be unique!__
+1. Select your region. _In my case, this is Europe._ 
+1. You'll be redirected to the Deploy tab of the new app.
+1. Go to Deployment method. Select your prefered deployment method. _As my code was already on Github, I chose the "Connect to Github" option. The following steps will be specific to this option._
+1. Sign in to your Github account to allow Heroku access to repositories.
+1. Search for your repo name. If you can't remember the specific spelling of the name, leave the input field blank and click "Search" to get a list of all your repos.
+1. When you've found your repo in the list, click the "Connect" button.
+1. You now have the choice to enable automatic deploys or deploy manually. 
+1. Your project will need to contain the following in order for Heroku to deploy it:
+    - a Procfile: this specifies the commands that are executed by the app on startup. You can use a Procfile to declare a variety of process types, including:
+        - Your app’s web server
+        - Multiple types of worker processes
+        - A singleton process, such as a clock
+        - Tasks to run before a new release is deployed.
 
-## FAQ about the uptime script
+        _In the case of this project, the Procfile contains only a single line:_
+        ```
+        web: python app.py
+        ```
+    - a requirements.txt file. This tells Heroku which dependencies need to be installed in order for the project to run. It's created by using the command `pip install` + the name of any dependencies you have (for example, Flask needs to be installed for this project) in the terminal of your prefered editor, followed by the command `pip freeze > requirements.txt` which will write the installed dependencies to a text file which Heroku then installs using `pip install requirements.txt`. 
+1. Go to settings in the Heroku tab. Click "Reveal Config Vars". Add the relevant environment variables you've used in your project to the Config Vars so Heroku can access them. Specifically, for this particular project, that means the following Config Vars were added: 
+    - DEBUG (set to False to turn off Debug mode in the deployed version. Locally, in development, this variable was set to True.)
+    - IP
+    - MONGO_DBNAME
+    - MONGO_URI
+    - PORT
+    - SECRET_KEY
+1. Check the activity tab. The two most recent items in the list should read "Deployed" and "Build Succeeded" in their status. 
+1. Click "Open App" in the top right side if this is the case, this will take you to the live site of the [Project](https://the-writers-club.herokuapp.com/).
 
-**Why have you added this script?**
+### To run this project locally:
+1. Clone the [Github repo](https://github.com/wings30306/the-writers-club) using the green "Clone or download" button. Several options are available here.
+1. Open the project in your prefered editor.
+1. Create a virtual environment using the command `python -m venv envname`, replacing "envname" with the name you want to give this environment. (More information on virtual environments: https://docs.python.org/3/library/venv.html)
+1. Open the virtual environment:
+    - Windows Cmd Shell: `<envname>\Scripts\Activate`
+    - Posix/Linux bash Shell:
+    `$ source <envname>/bin/activate`
+1. Install the dependencies using the command `pip install -r requirements.txt`
+1. Set up environment variables. There are different ways to do this  depending on your system and/or editor. In my editor of choice, VS Code running on Windows, you can do this in the .vscode directory that's generated for every project. This will contain a settings.json file. Add the following to the json dictionary: 
+    ``` 
+    "terminal.integrated.env.windows": 
+    {
+        "MONGO_DBNAME": "theDatabaseName",
+        "MONGO_URI": "theDatabaseURL",
+        "SECRET_KEY": "YourSecretKeyHere"
+    },
+    ``` 
+1. Run the project in your terminal using the command `python app.py` (like pip, for Unix-based systems you may need to use `python3`).
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## Credits
 
-**How will this affect me?**
+### Content
+- All stories were provided by the respective authors/users.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Media
+- The masthead image [Person Typing On Typewriter](https://www.pexels.com/photo/person-typing-on-typewriter-958164/) was posted by [rawpixel.com](https://www.pexels.com/@rawpixel) on [Pexels](www.pexels.com).
+- The paintings for the cover image choice were kindly provided by [CreaFien](https://robbehenderickx.wixsite.com/creafien).
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Acknowledgements
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+- I based the layout for the site on this [template: Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/).

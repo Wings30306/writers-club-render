@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %} {% if session.is_admin == True
+%}Admin Area{% else %}Meet the Team!{% endif %} {% endblock %} {% block header
+%} {% if session.is_admin == True %}Admin Area{% else %}Meet the Team!{% endif
+%} {% endblock %} {% block content %} {% if session.is_admin == True %}
+<h3>Admin Notifications</h3>
+{% if reports %} {% for reported_story in reports %}
+<div class="card">
+  <h4>Story: {{ reported_story.title }}</h4>
+  {% for report in reported_story.reports %}
+  <hr>
+  <h5>Report {{loop.index}}</h5>
+  <p>Item reported: {% if reported_story.url == report.item_reported %}Full story{% else %}{{report.item_reported}}{%endif%}</p>
+  <p>Reported by: {{ report.reported_by}}</p>
+  <p>Reason: {{ report.reason_given}}</p>
+  <a class="admin-only" href="{{ url_for('clear_reports', story_to_read=reported_story.url, loop_index=loop.index) }}">Clear Report</a>
+{% endfor %}
+</div>
+{% endfor %} {% else %}
+<p>No notifications at this time!</p>
+{% endif %} 
+<hr>
+{% endif %}
+<h2>Meet the Team!</h2>
+<div class="row">
+  {% for user in users %}
+  <div class="col-md-6">
+    <div class="card">
+      <h3>
+        <a href="{{url_for('profile', user=user.user_name) }}">{{
+          user.user_name | upper
+        }}</a>
+      </h3>
+      <p>
+        {{ user.intro | safe }}
+      </p>
+      <h5>
+        <a href="{{url_for('profile', user=user.user_name) }}">Read More</a>
+      </h5>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+Add Chapter to {{story.title}}
+{% endblock %}
+{% block header %}
+Add Chapter to {{story.title}}
+{% endblock %}
+{% block content %}
+
+
+<p>Story title: {{story.title}}</p>
+<p>Story summary: {{story.summary}}</p>
+<h2>Add a Chapter:</h2>
+<form id="form" method="POST" action="{{url_for('add_chapter', story_url=story.url)}}"">
+  <div class="form-group">
+  <label for="chapter_number">Chapter Number: </label>
+  <input type="number" id="chapter_number" name="chapter_number"class="form-control" min=1 required>
+  </div>
+  <div class="form-group">
+    <label for="chapter_title">Chapter Title: </label>
+    <input type="text" name="chapter_title" id="chapter_title" placeholder="Chapter Title" class="form-control">
+  </div>
+  <br>
+  <!--    Quill Editor    -->
+  
+  <div id="#toolbar">
+    
+  </div>
+  <div id="editor" placeholder="Paste or type and edit your story content here">
+  </div>
+  <!--    Hidden Input    -->
+  <input id="hidden-input" name="editor" type="hidden">
+  <!--   Hidden Button     -->
+  <button type="submit">Submit Changes</button>
+</form>
+{% endblock %}
+{% block template_script %}<script src="{{ url_for('static', filename='js/myscript.js') }}"></script>{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %} Log in {% endblock %} {% block
+header %} Log in {% endblock %} {% block content %}
+
+<h2>Please Log In Here:</h2>
+<div class="row justify-content-center">
+  <form method="POST" action="/user_auth">
+    <div class="form-group">
+      <label for="username">Username or email</label>
+      <input
+        name="username"
+        type="text"
+        class="form-control"
+        placeholder="Username"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="user_password">Password</label>
+      <input
+        class="form-control"
+        name="user_password"
+        type="password"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+  </form>
+</div>
+
+{% endblock %}

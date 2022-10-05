@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}Main{% endblock %} {% block header %}
+Welcome{% if session.username %}, {{ session.username }}{% endif %}! {% endblock
+%} {% block content %}
+<h2>
+  Welcome to the Writers' Club{% if session %}, {{ session.username }}{% endif
+  %}!
+</h2>
+<p>
+  This is the place to be for all writers and readers, no matter whether you
+  like fan fiction or original stories.
+</p>
+<h3>Guidelines for Appropriate Conduct</h3>
+<h4>General Guidelines</h4>
+<ol>
+  <li>
+    Always be respectful. Basically, the Golden Rule applies here: You wouldn’t
+    want someone to treat you badly, so don’t do it to others either.
+  </li>
+  <li>
+    Cyberbullying will not be tolerated and will result in an instant ban.
+  </li>
+  <li>
+    Signing up is required for reading adult-rated stories, posting stories and
+    posting feedback. We won’t reveal your private information (email address,
+    date of birth) to anyone else.
+  </li>
+</ol>
+<h4>Posting your stories</h4>
+<p>
+  All stories are welcome here, however we would ask you to keep the following
+  guidelines into account:
+</p>
+<ol>
+  <li>
+    Please clearly rate your story, especially if it’s R-rated, 18+, NSFW. If
+    you’re not sure what the rating for your story is, check the
+    <a data-toggle="modal" data-target="#ratings-modal">Ratings Guidelines</a>.
+  </li>
+  <li>
+    If your story is a fan fic, please add the required disclaimers as to
+    copyright. A standard disclaimer is pre-programmed in the story submission
+    section; however you are allowed to create a custom one instead. No
+    disclaimer is required for original stories.
+  </li>
+</ol>
+<h4>Feedback</h4>
+<p>
+  You'll find a Feedback button after every story. Giving feedback is a nice
+  boost for the author and as such, you're very welcome to tell them what you
+  thought. Please be kind:
+</p>
+<ol>
+  <li>
+    The Feedback section is not the place to push your own stories. Please limit
+    the comments only to the story you’re commenting on. Do not ask others to
+    read your stories just because you commented on theirs.
+  </li>
+  <li>
+    Constructive criticism is welcome, destructive criticism is not. No comments
+    saying: "Ugh, this story is crap!" please!
+  </li>
+  <li>
+    Likewise, spam messages will be removed and may result in a ban if warnings
+    are unheeded.
+  </li>
+  <li>
+    If you feel a certain story has been wrongly rated / categorised, please use
+    the report button to allow moderators to check it. The story will NOT be
+    removed while being checked, but if a report is deemed accurate, the author
+    will be contacted to request they adjust the categories as needed.
+  </li>
+</ol>
+<p>
+  If we can all keep these simple guidelines in mind, this can stay a welcoming
+  place for all. Thank you in advance for your cooperation!
+</p>
+<p>
+  <em
+    ><strong>
+      Happy reading / writing!
+    </strong></em
+  >
+</p>
+{% endblock %}

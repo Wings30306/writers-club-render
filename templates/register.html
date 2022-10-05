@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block title %} Register {% endblock %} {% block
+header %} Register {% endblock %} {% block content %}
+
+<h2>New user? Register here:</h2>
+<form class="form-signin" method="POST" action="/register">
+  <div class="form-group">
+    <label for="sign-in-username">Username</label>
+    <input
+      name="username"
+      type="text"
+      class="form-control"
+      id="sign-in-username"
+      pattern=".{5,}"
+      title="Must be five or more characters"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="birthday">Birthday: </label
+    ><input
+      type="date"
+      name="birthday"
+      id="birthday"
+      max="2019-01-01"
+      required
+    />
+    <span class="why"
+      ><a data-toggle="modal" data-target="#birthday-modal"
+        >Why do we ask this?</a
+      ></span
+    >
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input name="email" type="email" class="form-control" id="email" required />
+    <span class="why"
+      ><a data-toggle="modal" data-target="#privacy-modal"
+        >Privacy policy</a
+      ></span
+    >
+  </div>
+  <div class="form-group">
+    <label for="sign-in-password">Password</label>
+    <input
+      class="form-control"
+      name="user_password"
+      type="password"
+      id="sign-in-password"
+      pattern=".{7,}"
+      title="Seven or more characters"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="sign-in-password">Password again</label>
+    <input
+      class="form-control"
+      name="user_password1"
+      type="password"
+      id="sign-in-password1"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <p>
+      <em><strong>All fields are required!</strong></em>
+    </p>
+  </div>
+  <button class="btn btn-outline-success btn-lg btn-block" type="submit">
+    Sign Up
+  </button>
+</form>
+{% endblock %}

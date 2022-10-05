@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block title %}
+{{ title }}
+{% endblock %} {% block header %}
+{{ title }}
+{% endblock %} {% block content %}
+<div class="row">
+  <div class="d-none d-md-block col-md-3">
+    {% if cover_image %}
+    <img
+      class="cover-image"
+      src="{{ cover_image }}"
+      alt="Cover image for {{ title }}"
+    />
+    {% else %}
+    <img
+      class="cover-image"
+      src="https://dummyimage.com/200x300.jpg&text={{ title|replace(' ', '%20') }}"
+      alt="Cover image for {{ title }}"
+    />
+    {% endif %}
+  </div>
+  <div class="col-md-9">
+    <h4>{{ title }}</h4>
+    Author: <a href="{{url_for('profile', user=author) }}">{{ author }}</a
+    ><br />
+    Rating: {{ rating }}
+    <span>
+      (<a data-toggle="modal" data-target="#ratings-modal">Ratings Guidelines</a
+      >)
+    </span>
+    <br />
+    Fandom: {% if fandoms != None %} {% for fandom in fandoms %} {{ fandom }}{%
+    if loop.index < loop.length %}, {% endif %} {% endfor %} {% else %}
+    <em>Author has not selected a fandom.</em> {% endif %} <br />
+    Genre: {% for genre in genres %} {{ genre }}{% if loop.index < loop.length
+    %}, {% endif %} {% endfor %} <br />
+    Summary: {{ summary }} <br />
+    Disclaimer: {{ disclaimer }} <br />
+    Total chapters in this story: {{ total_chapters }}
+  </div>
+</div>
+{% if session.username != author %}
+<a href="{{url_for('report_story', story_to_read = story_to_read)}}"
+  >Report this story to admins</a
+>{% endif %}
+<hr />
+<h5 class="center">{{ chapter.chapter_title | title }}</h5>
+{{ chapter.chapter_content | safe }}
+<hr />
+<div class="buttons-container center">
+  {% if chapter_number > 1 %}
+  <a
+    href="{{ url_for('read', story_to_read=story_to_read, chapter_number = chapter_number - 1)}}"
+    class="btn btn-lg btn-mycolor left"
+    >Previous</a
+  >
+  {% endif %}
+  <a
+    href="{{ url_for('display_fb_page', story_to_read=story_to_read, chapter_number = chapter_number )}}"
+    class="btn btn-lg btn-mycolor left"
+    >Feedback</a
+  >
+  {% if chapter_number < total_chapters %}
+  <a
+    href="{{ url_for('read', story_to_read=story_to_read, chapter_number = chapter_number + 1 )}}"
+    class="btn btn-lg btn-mycolor left"
+    >Next</a
+  >
+  {% endif %}
+</div>
+{% if session.username == author %}
+<a
+  href="{{ url_for('edit_chapter', story_to_read=story_to_read, chapter_number = chapter_number) }}"
+  >Edit this chapter</a
+>
+{% endif %} {% endblock %}

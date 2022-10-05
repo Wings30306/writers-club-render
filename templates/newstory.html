@@ -1,0 +1,130 @@
+{% extends "base.html" %} {% block title %} Submit Your Story {% endblock %} {%
+block header %} Submit Your Story {% endblock %} {% block content %}
+<form method="POST">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="What's your story called?"
+      pattern=".{5,}"
+      title="Must be five or more characters"
+      required
+    />
+  </div>
+  <label>Choose a cover image<br />
+  </label>
+  {% for image in images %}
+  <div class="form-check-inline">
+    <label class="form-check-label">
+      <input
+        type="radio"
+        class="form-check-input"
+        name="image"
+        value="{{url_for('static', filename='images/'+image+'.jpg')}}"
+      /><img
+        src="{{url_for('static', filename='images/'+image+'.jpg')}}"
+        alt="{{ image }}"
+      />
+    </label>
+    
+  </div>
+  {% endfor %}<p><span
+    ><strong>
+    Images provided by
+    <a
+      href="https://robbehenderickx.wixsite.com/creafien"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Crea-Fien</a
+    >.</strong><br>If no image is selected, a grey placeholder will show with the chapter
+    title. Uploading your own image is not yet possible at this
+    time.
+    </span>
+  </p>
+
+  <div class="form-group">
+    <label for="summary">Summary</label>
+    <textarea
+      class="form-control"
+      id="summary"
+      name="summary"
+      rows="3"
+      pattern=".{20,}"
+      title="Please include a summary of at least twenty characters"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="rating">Rating</label>
+    <span>
+      <a data-toggle="modal" data-target="#ratings-modal">Ratings Guidelines</a>
+    </span>
+    <select class="form-control" id="rating" name="rating" required>
+      <option>R/Adult/NSFW</option>
+      <option>15</option>
+      <option>PG13</option>
+      <option>PG</option>
+      <option>All Ages</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="genre">Genre</label>
+    <div class="checkbox-list">
+      {% for genre in genres %}
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="genre-{{ loop.index }}"
+          value="{{ genre }}"
+        />{{ genre }}
+      </label>
+      {% endfor %}
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" /><input
+          type="text"
+          name="newgenre"
+        />
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fandom">Fandom</label>
+    <div class="checkbox-list">
+      {% for fandom in fandoms %}
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="fandom-{{ loop.index }}"
+          value="{{ fandom }}"
+        />{{ fandom }}
+      </label>
+      {% endfor %}
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" /><input
+          type="text"
+          name="newfandom"
+        />
+      </label>
+    </div>
+    <span
+      ><strong>Warning:</strong> Only select multiple if the story is a
+      crossover between fandoms!
+    </span>
+  </div>
+  <div class="form-group" id="div-disclaimer">
+    <label for="disclaimer">Disclaimer (required for Fan Fiction)</label>
+    <textarea
+      class="form-control"
+      id="disclaimer"
+      name="disclaimer"
+      rows="3"
+    ></textarea>
+  </div>
+  <button class="btn btn-my-color btn-lg">save and add chapter</button>
+</form>
+{%endblock%}

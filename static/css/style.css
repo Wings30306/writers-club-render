@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+}
+
+html {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
+
+.story-title {
+  text-align: start
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: 800;
+  font-family: Lora,'Times New Roman',serif;
+}
+
+header {
+  text-align: center;
+}
+
+header.masthead {
+  margin-bottom: 0;
+  background-image: url('https://images.pexels.com/photos/958164/pexels-photo-958164.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 75%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+header.masthead .page-heading {
+  width:100%;
+  padding: 4rem 0 0;
+  font-stretch: expanded;
+}
+
+.alert {
+  text-align: center
+}
+
+section{
+  padding-top: 30px;
+}
+
+.cover-image {
+  width: 100%;
+}
+
+form {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.log-in-form {
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+}
+
+form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form span {
+  font-size: 0.75em;
+}
+
+.form-check-inline {
+  width: 20%;
+  box-sizing: border-box;
+  margin: 0px 5px 5px 10px;
+}
+
+.form-check-inline img {
+  width: 80%;
+}
+
+.ql-container {
+  font-size: 1rem;
+  min-height: 20vh;
+}
+
+.ql-toolbar.ql-snow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.ql-toolbar .ql-formats {
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.ql-align-center,
+.center {
+  text-align: center;
+}
+
+table {
+  width: 100%
+}
+
+tr {
+  padding: 5px
+}
+
+.btn span {
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.btn-my-color {
+  border: solid 1px darkgrey;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px darkgrey;
+  margin: 10px;
+}
+
+.postbox,
+.card {
+  border: solid 2px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+  height: 100%
+}
+
+.card p,
+.postbox p {
+  margin: 0 0 0.5em 0;
+  text-align: justify;
+}
+
+
+.admin-only {
+  color: darkred;
+  text-decoration: none;
+  font-style: italic;
+}
+
+
+.admin-only:hover{
+  font-weight: bold;
+  text-decoration: none;
+  color: darkred;
+}
+
+.btn-my-color:hover,
+a:hover {
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 5px 5px 8px rgb(63, 62, 62);
+}
+
+.search-btn {
+  width: 80%;
+  padding: 15px 25px;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar-brand {
+    font-size: 3em;
+  }
+}

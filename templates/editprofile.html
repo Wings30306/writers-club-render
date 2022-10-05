@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+{% block title %} Edit your profile {% endblock %} 
+{% block header %} Edit your profile {% endblock %} 
+{% block content %} 
+{% for this_user in profile %}
+<form id="form" method="POST" action="{{ url_for('update_profile', user=session['username']) }}">
+<div class="form-group">
+  <label for="intro">Introduce Yourself!</label>
+  <!--    Hidden Input    -->
+  <input id="hidden-input" name="editor" type="hidden">
+  <div id="#toolbar"></div>
+  <div id="editor">
+    <p>{{this_user.intro|safe}}</p>
+  </div>
+</div>
+<div class="form-group">
+  <label for="is_writer">I am a writer:</label>  
+  <input type="checkbox" name="is_writer" id="is_writer" {% if this_user.is_writer == "on" %} checked=checked {% endif %}>
+  
+  
+</div>
+<div class="form-group">
+  <label for="date">I have been writing since (year)</label>  <input type="year" name="started_writing" id="started_writing" value="{{ this_user.started_writing }}"></label><span> Only shows if checkbox for "I am a writer" is checked.</span>
+</div>
+<div class="form-group">
+  <label for="email">Email </label><input type="email" name="email" id="email" value="{{ this_user.email }}" required></label><a data-toggle="modal"
+  data-target="#privacy-modal"><span> Privacy Policy: Your email is never shown to anyone except admins.</span></a></p>
+</div>
+<div class="form-group">
+  <label for="birthday">Birthday: </label><input type="date" name="birthday" id="birthday" value="{{this_user.birthday}}"> 
+  <span class="why"><a data-toggle="modal"
+    data-target="#birthday-modal">Why do we ask this?</a></p></span>
+</div>
+<div class="form-group">
+  <label for="show_birthday">Show my birthday on Profile: </label>
+  <input type="checkbox" name="show_birthday" id="show_birthday" {% if this_user.show_birthday == "on" %} checked=checked {% endif %}>
+</div>
+<button type="submit">Submit</button>
+</form>
+{% endfor %}
+{% endblock %}
+{% block template_script %}<script src="{{ url_for('static', filename='js/myscript.js') }}"></script>{% endblock %}

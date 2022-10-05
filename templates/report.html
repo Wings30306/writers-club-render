@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Report page{% endblock %} {% block
+header %}Report Page{% endblock %} {% block content %} {% if reported_feedback
+%}
+<h2>Report this post:</h2>
+{{ reported_feedback.posted_by }}
+{{ reported_feedback.fb_content }}
+{% else %}
+<h2>Report {{ story.title }}</h2>
+{% endif %}
+<form
+  method="POST"
+  action="{{ url_for('send_story_report', story_to_read=story.url) }}"
+>
+  <div class="form-group">
+    <label for="reason">Why are you reporting this post?</label>
+    <textarea
+      class="form-control"
+      id="reason"
+      name="reason"
+      rows="3"
+      required
+    ></textarea>
+  </div>
+  <button method="POST">Submit Report</button>
+</form>
+{% endblock %}
