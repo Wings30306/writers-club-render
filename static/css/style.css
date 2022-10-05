@@ -27,10 +27,10 @@ header {
 
 header.masthead {
   margin-bottom: 0;
-  background-image: url('https://images.pexels.com/photos/958164/pexels-photo-958164.jpeg');
+  background-image: url('../images/pexels-suzy-hazelwood-1995842.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 75%;
+  background-size: contain;
+  background-position: top center;
   height: 50vh;
   display: flex;
   align-items: center;
