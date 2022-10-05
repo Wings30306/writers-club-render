@@ -163,7 +163,7 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
 - All stories were provided by the respective authors/users.
 
 ### Media
-- The masthead image [Person Typing On Typewriter](https://www.pexels.com/photo/person-typing-on-typewriter-958164/) was posted by [rawpixel.com](https://www.pexels.com/@rawpixel) on [Pexels](www.pexels.com).
+- The masthead image: [Photo by Suzy Hazelwood](https://www.pexels.com/photo/black-and-red-typewriter-1995842/)
 - The paintings for the cover image choice were kindly provided by [CreaFien](https://robbehenderickx.wixsite.com/creafien).
 
 ### Acknowledgements
